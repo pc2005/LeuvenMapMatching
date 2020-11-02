@@ -16,3 +16,9 @@ examples/Leuven\ Stadswandeling*
 .pytest_cache
 docs/_build
 build
+*.pyc
+*.sqlite
+*.png
+*.pkl
+.gitignore
+tests/rsrc/**

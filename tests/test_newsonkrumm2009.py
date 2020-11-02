@@ -403,7 +403,7 @@ def test_bug2():
     if directory:
         import matplotlib.pyplot as plt
         matcher.print_lattice_stats()
-        logger.debug("Plotting post map ...")
+        logger.debug("Plotting post map ...") 
         fig = plt.figure(figsize=(100, 100))
         ax = fig.get_axes()
         mm_viz.plot_map(map_con, matcher=matcher, use_osm=True, ax=ax,
@@ -421,6 +421,6 @@ if __name__ == "__main__":
     directory = Path(os.environ.get('TESTDIR', Path(__file__).parent))
     print(f"Saving files to {directory}")
     # test_route()
-    # test_route_slice1()
+    test_route_slice1()
     # test_bug1()
-    test_bug2()
+    # test_bug2()
