@@ -322,7 +322,7 @@ def test_route():
         print(route_paths[:10])
 
         logger.debug(f"Compute route mismatch factor")
-        factor, cnt_matches, cnt_mismatches, total_length, mismatches = \
+        factor, cnt_matches, cnt_mismatches, total_length, mismatches, _, _ = \
             route_mismatch_factor(map_con, route_paths, grnd_paths,window=None, keep_mismatches=True)
         logger.debug(f"factor = {factor}, "
                      f"cnt_matches = {cnt_matches}/{cnt_mismatches} of {len(grnd_paths)}/{len(route_paths)}, "
