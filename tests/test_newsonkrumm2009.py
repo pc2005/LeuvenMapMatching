@@ -206,20 +206,27 @@ def load_data():
 def test_route_slice1():
     if directory:
         import matplotlib.pyplot as plt
+    # load path, map and route from database
     nodes, map_con, route = load_data()
-    zoom_path = True
+    # zoom_path = True
+    # get a slice of route
+    route_slice = route[2657:2662]
 
+    # init matcher object
     matcher = DistanceMatcher(map_con, min_prob_norm=0.001,
                               max_dist=200,
                               dist_noise=6, dist_noise_ne=12,
                               obs_noise=30, obs_noise_ne=150,
                               non_emitting_states=True)
-    route_slice = route[2657:2662]
+
+    # matching
     matcher.match(route_slice)
+
     path_pred = matcher.path_pred_onlynodes
     path_sol = [172815, 172816, 172817, 172818, 172819, 172820, 172821, 172822, 172823, 172824,
                 172825, 172826, 172827, 172828, 172829, 172830, 884148100261, 172835, 172836,
                 172837, 884148100254, 172806, 884148100255, 172807]  # Can change when building db
+    
     assert len(path_pred) == len(path_sol)
 
 
@@ -270,7 +277,7 @@ def test_route():
     else:
         plt = None
     paths, map_con, route = load_data()
-    route = [(lat, lon) for lat, lon, _ in route]
+    route = [(lat, lon) for lat, lon in route]
     zoom_path = True
     # zoom_path = slice(2645, 2665)
     slice_route = None
@@ -420,7 +427,9 @@ if __name__ == "__main__":
     logger.addHandler(logging.StreamHandler(sys.stdout))
     directory = Path(os.environ.get('TESTDIR', Path(__file__).parent))
     print(f"Saving files to {directory}")
-    # test_route()
-    test_route_slice1()
+
+    ### Run test cases ###
+    test_route()
+    # test_route_slice1()
     # test_bug1()
     # test_bug2()
