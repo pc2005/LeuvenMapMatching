@@ -287,6 +287,7 @@ def test_route():
     # slice_route = slice(2910, 2950)  # Interesting point
     # slice_route = slice(2910, 2929)  # Interesting point
     # slice_route = slice(6825, 6833)  # Outlier observation
+    slice_route = slice(6300, )
 
     # if directory is not None:
     #     logger.debug("Plotting pre map ...")
@@ -350,7 +351,7 @@ def test_route():
         plt.savefig(str(directory / "test_newson_route_matched.png"))
         plt.close(fig)
         logger.debug("... done")
-        logger.debug("Best path:")
+        logger.debug("Best path:") 
         for m in matcher.lattice_best:
             logger.debug(m)
 
